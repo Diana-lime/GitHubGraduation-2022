@@ -1,0 +1,39 @@
+#include <locale>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+const int ssi = 8 * sizeof(signed short int);
+
+int main()
+{
+	locale::global(locale("RUS"));
+	signed short int x;
+	cout << "введите х";
+	cin >> x;
+	int bits[ssi], b[ssi];
+	for (int i = 0; i < ssi; ++i)
+	{
+		if (x % 2 == 0)
+		{
+			bits[i] = 0;
+		}
+		else {
+			bits[i] = 1;
+		}
+		x = x / 2;
+	}
+	cout << "число в двоичном представлеии ";
+	for (int i = (ssi-1); i >=0; --i)
+	{
+		b[i] = bits[i];
+		cout << b[i];
+	}
+	cout << endl<< "отсортированное число ";
+	for (int i = 0; i < ssi; ++i)
+		if (b[i] == 1)
+			cout << b[i];
+	for (int i = 0; i < ssi; ++i)
+		if (b[i] == 0)
+			cout << b[i];
+	
